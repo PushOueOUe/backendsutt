@@ -1,31 +1,3 @@
-#!/usr/bin/env python3
-"""
-room_booking_cli.py
-
-A command-line room booking manager.
-
-Features:
-- Represent rooms (room_no, building, capacity, booked_hours).
-- Add a new room (room_no must be unique).
-- Book a room for a single hour (0-23) with conflict checking.
-- Filter/find rooms by building, minimum capacity, and/or free at a given hour.
-- View a room's details and booked schedule.
-- Custom exceptions for predictable errors:
-    - RoomNotFoundError
-    - TimeslotAlreadyBookedError
-    - RoomAlreadyExistsError
-- Saves final state to bookings_final_state.csv on exit and loads it on start.
-
-CSV format (headers):
-room_no,building,capacity,booked_hours
-booked_hours is a semicolon-separated list of integer hours (e.g., "9;14;15") or empty if none.
-
-Design choices & notes:
-- Room is an object encapsulating booking state and related methods.
-- RoomManager manages the collection of Room objects and handles persistence.
-- CLI loop catches custom exceptions and shows friendly messages.
-- CSV is the single source-of-truth persistence file named 'bookings_final_state.csv'.
-"""
 
 import csv
 import os
@@ -374,3 +346,4 @@ if __name__ == "__main__":
             print(f"Saved to {RoomManager.CSV_FILENAME}. Goodbye!")
         except Exception:
             print("Error saving state. Exiting without saving.")
+
